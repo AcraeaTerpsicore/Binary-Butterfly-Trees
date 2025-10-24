@@ -19,3 +19,10 @@ Run the automated checks with:
 ```
 
 The script reports success or failure and acts as a quick health check for both symbolic and combinatorial parts of the implementation.
+
+## Future Extensions
+
+- Add symbolic routines that extract coefficient tables for $T_p(z)$ beyond the current truncation utilities.
+- Build visualization helpers that render `BTNode`/`BTLeaf` structures, mirroring the figures from the reference paper.
+- Extend the recurrence verification to higher $p$ via numeric evaluation and automatic simplification heuristics.
+- Package the workflow as a Mathematica notebook and expose a small API for exploratory experimentation.
