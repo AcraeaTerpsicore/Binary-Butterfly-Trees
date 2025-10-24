@@ -1,11 +1,11 @@
 # Binary Butterfly Trees in Wolfram Language
 
-This project implements the Horton-Strahler (register) analysis for binary butterfly trees, following the derivations in `reference_paper/glue-register.tex`. The core Wolfram Language packages cover both structural tree utilities and the closed-form generating functions that emerge from the paper.
+This project implements the Horton-Strahler (register) analysis for binary butterfly trees, following the derivations in the paper *[Horton-Strahler numbers for binary butterfly trees: exact analysis](https://arxiv.org/pdf/2510.18664)*. The core Wolfram Language packages cover both structural tree utilities and the closed-form generating functions that emerge from the paper.
 
 ## Contents
 
 - `src/BinaryTreeUtils.wl` – structural utilities for binary trees, register evaluation, enumeration by size, and the glue operation.
-- `src/ButterflyGeneratingFunctions.wl` – generating functions for classic binary trees and the glued (butterfly) model, including the closed form for $T_p(z)$.
+- `src/ButterflyGeneratingFunctions.wl` – generating functions for classic binary trees and the glued (butterfly) model, including closed forms and symbolic coefficient extraction for $T_p(z)$.
 - `src/ButterflyAPI.wl` – exploratory helpers that enumerate glued trees, register distributions, and averages.
 - `tests/run_tests.wl` – regression tests that cross-check symbolic recurrences against explicit enumeration for small instances.
 - `FORMULAS.md` – list of mathematical identities reproduced in the code.

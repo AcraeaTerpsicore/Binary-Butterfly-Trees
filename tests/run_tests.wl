@@ -61,6 +61,16 @@ tests = {
         TestID -> "t1-equals-a"
     ],
     VerificationTest[
+        ButterflyRegisterCoefficientTable[1, 4],
+        {0, 1, 3, 9, 28},
+        TestID -> "coeff-table-p1"
+    ],
+    VerificationTest[
+        ButterflyRegisterCoefficient[2, 3],
+        enumerateButterflyCounts[3, 2][[3]],
+        TestID -> "coeff-value-p2n3"
+    ],
+    VerificationTest[
         Normal[VerifyButterflyRecurrence[2, 6] /. ButterflyGeneratingFunctions`Private`z -> z],
         0,
         TestID -> "recurrence-p2"

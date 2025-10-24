@@ -11,6 +11,8 @@ ButterflyRegisterSurvivalFunction::usage = "ButterflyRegisterSurvivalFunction[p,
 RegisterSurvivalSeries::usage = "RegisterSurvivalSeries[p, order] expands S_p(z) as a power series in z up to order.";
 ButterflyRegisterSeries::usage = "ButterflyRegisterSeries[p, order] expands T_p(z) as a power series in z up to order.";
 VerifyButterflyRecurrence::usage = "VerifyButterflyRecurrence[p, order] returns the residual of the T_p recurrence as a series in z up to order.";
+ButterflyRegisterCoefficient::usage = "ButterflyRegisterCoefficient[p, n] gives the exact coefficient [z^n]T_p(z).";
+ButterflyRegisterCoefficientTable::usage = "ButterflyRegisterCoefficientTable[p, max] returns the coefficients [z^n]T_p(z) for 0 <= n <= max.";
 
 Begin["`Private`"];
 
@@ -50,6 +52,16 @@ RegisterSurvivalSeries[p_Integer?NonNegative, order_Integer?Positive] := seriesW
 ButterflyRegisterSeries[p_Integer?Positive, order_Integer?Positive] := seriesWithSubstitution[
     ButterflyRegisterSurvivalFunction[p, u],
     order
+];
+
+ButterflyRegisterCoefficient[p_Integer?Positive, n_Integer?NonNegative] := ButterflyRegisterCoefficient[p, n] = SeriesCoefficient[
+    ButterflyRegisterSurvivalFunction[p, u] /. u -> UFromZ[z],
+    {z, 0, n}
+];
+
+ButterflyRegisterCoefficientTable[p_Integer?Positive, max_Integer?NonNegative] := Table[
+    ButterflyRegisterCoefficient[p, n],
+    {n, 0, max}
 ];
 
 VerifyButterflyRecurrence[p_Integer?Positive, order_Integer?Positive] /; p >= 2 := Module[
