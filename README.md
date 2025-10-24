@@ -28,6 +28,7 @@ Open `notebooks/ButterflyExploration.nb` to load the packages automatically, ins
 
 ## Future Extensions
 
-- Add symbolic routines that extract coefficient tables for $T_p(z)$ beyond the current truncation utilities.
 - Build visualization helpers that render `BTNode`/`BTLeaf` structures, mirroring the figures from the reference paper.
+- Implement asymptotic estimators for $[z^n]T_p(z)$ using Mellin-transform techniques discussed in the reference.
 - Extend the recurrence verification to higher $p$ via numeric evaluation and automatic simplification heuristics.
+- Add exporters that materialize coefficient tables and register distributions as CSV/JSON for downstream analysis.
