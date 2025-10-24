@@ -1,2 +1,3 @@
 - Command: `"/mnt/d/Software/Wolfram Research/Mathematica/14.0/wolframscript.exe" -script tests/run_tests.wl`
 - Result: All tests passed (15 successes, 0 failures).
+- Notes: Coverage includes symbolic coefficient extraction, Mellin-based asymptotic estimators, and distribution checks.

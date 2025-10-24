@@ -27,3 +27,9 @@
   $$
   T_p(z)\bigl(1 - z(B(z) - S_{p-1}(z))\bigr) = S_p(z)\bigl(1 + zA(z)\bigr) + z\bigl(S_{p-1}(z) - S_p(z)\bigr)T_{p-1}(z).
   $$
+
+- Leading asymptotic for the coefficients (Mellin-derived):
+  $$
+  [z^n]T_p(z) \sim \frac{\partial_u T_p(1)}{\sqrt{\pi}}\,\frac{4^n}{n^{3/2}} \qquad (n \to \infty),
+  $$
+  where $\partial_u T_p(1)$ is obtained from differentiating the closed form with respect to $u$ at $u=1$.

@@ -30,7 +30,7 @@ Open `notebooks/ButterflyExploration.nb` to load the packages automatically, ins
 
 Use `ButterflyRegisterCoefficientAsymptotic[p, n]` (or the API mirror `ButterflyRegisterCoefficientApprox`) to obtain the Mellin-based leading-order estimate 
 $$[z^n]T_p(z) \approx \frac{\partial_u T_p(1)}{\sqrt{\pi}}\,\frac{4^n}{n^{3/2}}.$$
-This leverages the square-root singularity at $z=\tfrac14$ and matches the derivation outlined in the reference paper.
+This leverages the square-root singularity at $z=\tfrac14$, matches the derivation outlined in the reference paper, and pairs with `ButterflyRegisterDerivativeAtOne[p]` to supply the constant factor.
 
 ## Future Extensions
 
