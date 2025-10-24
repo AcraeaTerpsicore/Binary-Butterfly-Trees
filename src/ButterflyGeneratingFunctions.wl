@@ -13,6 +13,8 @@ ButterflyRegisterSeries::usage = "ButterflyRegisterSeries[p, order] expands T_p(
 VerifyButterflyRecurrence::usage = "VerifyButterflyRecurrence[p, order] returns the residual of the T_p recurrence as a series in z up to order.";
 ButterflyRegisterCoefficient::usage = "ButterflyRegisterCoefficient[p, n] gives the exact coefficient [z^n]T_p(z).";
 ButterflyRegisterCoefficientTable::usage = "ButterflyRegisterCoefficientTable[p, max] returns the coefficients [z^n]T_p(z) for 0 <= n <= max.";
+ButterflyRegisterDerivativeAtOne::usage = "ButterflyRegisterDerivativeAtOne[p] gives d/du T_p(z(u)) evaluated at u=1.";
+ButterflyRegisterCoefficientAsymptotic::usage = "ButterflyRegisterCoefficientAsymptotic[p, n] estimates [z^n]T_p(z) using the leading Mellin-derived asymptotic.";
 
 Begin["`Private`"];
 
@@ -62,6 +64,17 @@ ButterflyRegisterCoefficient[p_Integer?Positive, n_Integer?NonNegative] := Butte
 ButterflyRegisterCoefficientTable[p_Integer?Positive, max_Integer?NonNegative] := Table[
     ButterflyRegisterCoefficient[p, n],
     {n, 0, max}
+];
+
+ButterflyRegisterDerivativeAtOne[p_Integer?Positive] := ButterflyRegisterDerivativeAtOne[p] = Module[
+    {expr},
+    expr = ButterflyRegisterSurvivalFunction[p, u];
+    Limit[D[expr, u], u -> 1, Assumptions -> p > 0]
+];
+
+ButterflyRegisterCoefficientAsymptotic[p_Integer?Positive, n_Integer?Positive] := Module[
+    {c = ButterflyRegisterDerivativeAtOne[p]},
+    c*4^n/(Sqrt[Pi] n^(3/2))
 ];
 
 VerifyButterflyRecurrence[p_Integer?Positive, order_Integer?Positive] /; p >= 2 := Module[

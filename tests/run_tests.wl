@@ -71,6 +71,19 @@ tests = {
         TestID -> "coeff-value-p2n3"
     ],
     VerificationTest[
+        ButterflyRegisterDerivativeAtOne[1],
+        3,
+        TestID -> "derivative-at-one"
+    ],
+    With[{n = 40, p = 1},
+        VerificationTest[
+            Abs[ButterflyRegisterCoefficientAsymptotic[p, n] - ButterflyRegisterCoefficient[p, n]]/
+                ButterflyRegisterCoefficient[p, n] < 0.1,
+            True,
+            TestID -> "asymptotic-relative-error"
+        ]
+    ],
+    VerificationTest[
         Normal[VerifyButterflyRecurrence[2, 6] /. ButterflyGeneratingFunctions`Private`z -> z],
         0,
         TestID -> "recurrence-p2"

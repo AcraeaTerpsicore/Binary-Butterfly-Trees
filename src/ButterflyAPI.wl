@@ -6,6 +6,7 @@ ButterflyTreePairs::usage = "ButterflyTreePairs[n] enumerates ordered pairs of b
 ButterflyGluedTrees::usage = "ButterflyGluedTrees[n] returns the multiset of glued butterfly trees of size n.";
 ButterflyRegisterDistribution::usage = "ButterflyRegisterDistribution[n] returns an association of register numbers to counts for glued trees of size n.";
 ButterflyAverageRegister::usage = "ButterflyAverageRegister[n] gives the average register value across all glued trees of size n.";
+ButterflyRegisterCoefficientApprox::usage = "ButterflyRegisterCoefficientApprox[p, n] returns the leading asymptotic estimate for [z^n]T_p(z).";
 
 Begin["`Private`"];
 
@@ -42,6 +43,8 @@ ButterflyAverageRegister[n_Integer?Positive] := Module[
     N[weighted/total]
 ];
 ButterflyAverageRegister[_] := Indeterminate;
+
+ButterflyRegisterCoefficientApprox[p_Integer?Positive, n_Integer?Positive] := ButterflyGeneratingFunctions`ButterflyRegisterCoefficientAsymptotic[p, n];
 
 End[];
 EndPackage[];
