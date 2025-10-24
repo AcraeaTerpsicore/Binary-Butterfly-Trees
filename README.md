@@ -6,9 +6,11 @@ This project implements the Horton-Strahler (register) analysis for binary butte
 
 - `src/BinaryTreeUtils.wl` – structural utilities for binary trees, register evaluation, enumeration by size, and the glue operation.
 - `src/ButterflyGeneratingFunctions.wl` – generating functions for classic binary trees and the glued (butterfly) model, including the closed form for $T_p(z)$.
+- `src/ButterflyAPI.wl` – exploratory helpers that enumerate glued trees, register distributions, and averages.
 - `tests/run_tests.wl` – regression tests that cross-check symbolic recurrences against explicit enumeration for small instances.
 - `FORMULAS.md` – list of mathematical identities reproduced in the code.
 - `TEST_SUMMARY.md` – record of the test command and outcome.
+- `notebooks/ButterflyExploration.nb` – interactive notebook for experimenting with the API.
 
 ## Running the tests
 
@@ -20,9 +22,12 @@ Run the automated checks with:
 
 The script reports success or failure and acts as a quick health check for both symbolic and combinatorial parts of the implementation.
 
+## Exploration Notebook
+
+Open `notebooks/ButterflyExploration.nb` to load the packages automatically, inspect register distributions, and experiment with the API from a Mathematica front end.
+
 ## Future Extensions
 
 - Add symbolic routines that extract coefficient tables for $T_p(z)$ beyond the current truncation utilities.
 - Build visualization helpers that render `BTNode`/`BTLeaf` structures, mirroring the figures from the reference paper.
 - Extend the recurrence verification to higher $p$ via numeric evaluation and automatic simplification heuristics.
-- Package the workflow as a Mathematica notebook and expose a small API for exploratory experimentation.

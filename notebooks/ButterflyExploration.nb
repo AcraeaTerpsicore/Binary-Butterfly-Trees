@@ -1,0 +1,43 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(** Mathematica Notebook **)
+
+Notebook[{
+ Cell["Butterfly Trees Exploration", "Title"],
+ Cell["Load the project packages derived from the glue-register analysis.", "Text"],
+ Cell[BoxData[
+   ToBoxes[
+    (
+     root = NotebookDirectory[];
+     AppendTo[$Path, FileNameJoin[{root, "..", "src"}]];
+     Needs["BinaryTreeUtils`"];
+     Needs["ButterflyGeneratingFunctions`"];
+     Needs["ButterflyAPI`"];
+    )
+   ]
+  ], "Input"],
+ Cell["Inspect the register distribution for butterfly trees with four internal nodes.", "Text"],
+ Cell[BoxData[
+   ToBoxes[
+    ButterflyRegisterDistribution[4]
+   ]
+  ], "Input"],
+ Cell["Compute the average register number for sizes one through six.", "Text"],
+ Cell[BoxData[
+   ToBoxes[
+    ButterflyAverageRegister /@ Range[1, 6]
+   ]
+  ], "Input"],
+ Cell["List the first few glued trees of size three to inspect their structure.", "Text"],
+ Cell[BoxData[
+   ToBoxes[
+    Short[ButterflyGluedTrees[3], 4]
+   ]
+  ], "Input"]
+},
+ WindowSize -> {700, 750},
+ WindowMargins -> {{Automatic, 100}, {Automatic, 50}},
+ CellContext -> Notebook,
+ StyleDefinitions -> "Default.nb"
+]
+

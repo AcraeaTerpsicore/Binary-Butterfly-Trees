@@ -3,6 +3,7 @@ AppendTo[$Path, FileNameJoin[{root, "src"}]];
 
 Needs["BinaryTreeUtils`"];
 Needs["ButterflyGeneratingFunctions`"];
+Needs["ButterflyAPI`"];
 
 enumerateButterflyCounts[maxN_Integer?Positive, p_Integer?Positive] := Module[
     {counts = Table[0, {maxN}], n, k, total},
@@ -63,6 +64,32 @@ tests = {
         Normal[VerifyButterflyRecurrence[2, 6] /. ButterflyGeneratingFunctions`Private`z -> z],
         0,
         TestID -> "recurrence-p2"
+    ],
+    VerificationTest[
+        Length[ButterflyGluedTrees[4]],
+        tpSeriesCoefficients[1, 4][[4]],
+        TestID -> "glued-count-size-4"
+    ],
+    With[{dist = ButterflyRegisterDistribution[3]},
+        VerificationTest[
+            Total[Values[dist]],
+            Length[ButterflyGluedTrees[3]],
+            TestID -> "distribution-total"
+        ]
+    ],
+    With[{dist = ButterflyRegisterDistribution[3]},
+        VerificationTest[
+            Total[Normal[dist] /. Rule[k_, v_] :> If[k >= 2, v, 0]],
+            enumerateButterflyCounts[3, 2][[3]],
+            TestID -> "distribution-tail"
+        ]
+    ],
+    With[{dist = ButterflyRegisterDistribution[3]},
+        VerificationTest[
+            ButterflyAverageRegister[3],
+            N[Total[Normal[dist] /. Rule[k_, v_] :> k v]/Total[Values[dist]]],
+            TestID -> "average-from-distribution"
+        ]
     ],
     With[{maxN = 4, p = 1},
         VerificationTest[
